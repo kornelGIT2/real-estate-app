@@ -1,13 +1,37 @@
 import "./App.css";
-import Hero from "./components/hero/Hero";
-import Navbar from "./components/navbar/Navbar";
+import EstateList from "./routes/estateListPage/estateListPage";
+import {
+  createBrowserRouter as Router,
+  RouterProvider,
+} from "react-router-dom";
+import Layout from "./routes/layout/layout";
+import Home from "./routes/home/home";
+import Map from "./components/map/map";
+import SecondLayout from "./routes/layout/secondLayout";
 
 function App() {
+  const router = Router([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [{ path: "/", element: <Home /> }],
+    },
+    {
+      path: "/list",
+      element: <SecondLayout />,
+      children: [{ path: "/list", element: <EstateList /> }],
+    },
+    {
+      path: "/map",
+      element: <SecondLayout />,
+      children: [{ path: "/map", element: <Map /> }],
+    },
+  ]);
+
   return (
-    <main className="flex flex-col items-center h-screen   ">
-      <Navbar />
-      <Hero />
-    </main>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 

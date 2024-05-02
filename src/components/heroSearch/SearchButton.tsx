@@ -6,9 +6,11 @@ interface SearchButton {
   setSearchOption: (type: searchOptions) => void;
   type: searchOptions;
   searchType: searchOptions;
+  key: number;
 }
 
 function SearchButton({
+  key,
   children,
   setSearchOption,
   type,
@@ -16,6 +18,7 @@ function SearchButton({
 }: SearchButton) {
   return (
     <button
+      key={key}
       onClick={() => {
         setSearchOption(type);
       }}
