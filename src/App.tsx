@@ -8,6 +8,9 @@ import Layout from "./routes/layout/layout";
 import Home from "./routes/home/home";
 import Map from "./components/map/map";
 import SecondLayout from "./routes/layout/secondLayout";
+import Footer from "./components/footer/Footer";
+import PropertyDetails from "./routes/propertyDetails/propertyDetails";
+import MapLayout from "./routes/layout/mapLayout";
 
 function App() {
   const router = Router([
@@ -23,14 +26,20 @@ function App() {
     },
     {
       path: "/map",
+      element: <MapLayout />,
+      children: [{ path: "/map", element: <Map heigth={1000} /> }],
+    },
+    {
+      path: "/property/:id",
       element: <SecondLayout />,
-      children: [{ path: "/map", element: <Map /> }],
+      children: [{ path: "/property/:id", element: <PropertyDetails /> }],
     },
   ]);
 
   return (
     <>
       <RouterProvider router={router} />
+      <Footer />
     </>
   );
 }

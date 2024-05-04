@@ -5,7 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 export type searchOptions = "Buy" | "Rent" | "Adress";
 
-function HeroSearch() {
+function HeroSearch({
+  setShowFilters,
+  showFilter,
+}: {
+  setShowFilters: () => void;
+  showFilter: boolean;
+}) {
   const navigate = useNavigate();
   const [searchOption, setSearchOption] = useState<searchOptions>("Buy");
 
@@ -38,14 +44,17 @@ function HeroSearch() {
               placeholder="Search postcode or state..."
             />
           </div>
-          <div className="md:flex gap-2 hidden">
-            <button className="p-2 pl-5 hover:border-slate-700 pr-5 text-md flex justify-center items-center gap-2 text-black border border-slate-400 font-medium rounded-3xl">
+          <div className="md:flex gap-2 hidden min-w-[250px]">
+            <button
+              onClick={setShowFilters}
+              className="p-2 pl-5 hover:border-slate-700 pr-5 text-md flex justify-center items-center gap-2 text-black border border-slate-400 font-medium rounded-3xl"
+            >
               <img
                 src="/assets/filters.svg"
                 alt="search"
                 className="h-4 w-4 mt-[1px]"
               />
-              Filters
+              {!showFilter ? "Show Filters" : "Close Filters"}
             </button>
             <button
               onClick={() => {

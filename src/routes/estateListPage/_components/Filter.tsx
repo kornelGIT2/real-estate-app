@@ -46,7 +46,7 @@ function Filter() {
             placeholder="Min Price"
             type="number"
             value={minPrice}
-            onChange={(e) => {
+            onChange={(e: any) => {
               setMinPrice(e.target.value);
             }}
           />
@@ -63,7 +63,7 @@ function Filter() {
             placeholder="Max Price"
             type="number"
             value={maxPrice}
-            onChange={(e) => {
+            onChange={(e: any) => {
               setMaxPrice(e.target.value);
             }}
           />

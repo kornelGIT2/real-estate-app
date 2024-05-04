@@ -17,7 +17,7 @@ function EstateList() {
     <>
       <div className="grid  lg:grid-cols-12 w-full  h-full gap-14 relative mt-10">
         <div className="mt-12 z-0 lg:hidden md:hidden block col-span-8">
-          <Map />
+          <Map heigth={600} />
         </div>
 
         <div className="col-span-8 flex flex-col gap-4">
@@ -95,8 +95,10 @@ function EstateList() {
 
           <PaginatedItems />
         </div>
-        <div className="col-span-4 lg:block hidden  mt-14 z-0 ">
-          <Map />
+        <div className="">
+          <div className="col-span-4 lg:block sticky top-4 hidden w-[400px] mt-14 z-0 shadow-xl">
+            <Map heigth={700} />
+          </div>
         </div>
       </div>
     </>

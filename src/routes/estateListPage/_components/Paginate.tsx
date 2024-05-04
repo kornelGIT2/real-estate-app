@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import useFilter from "../../../hooks/useFilter";
 import { useFilterContext } from "../../../filterContext/FilterContext";
@@ -50,13 +49,13 @@ function PaginatedItems() {
       </ul>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="Next >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="< Previous"
         renderOnZeroPageCount={null}
-        className="flex gap-4"
+        className="flex gap-4 mt-6 font-semibold text-sm"
       />
     </>
   );

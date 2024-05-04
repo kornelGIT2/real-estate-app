@@ -4,10 +4,12 @@ import { FilterProvider } from "../../filterContext/FilterContext";
 
 function SecondLayout() {
   return (
-    <main className="flex flex-col items-center">
+    <main className="flex flex-col items-center ">
       <FilterProvider>
         <Navbar />
-        <Outlet />
+        <div className="max-w-[1500px] mx-auto p-[0.5rem]">
+          <Outlet />
+        </div>
       </FilterProvider>
     </main>
   );

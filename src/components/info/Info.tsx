@@ -1,6 +1,6 @@
 function Info() {
   return (
-    <div className="mt-10  w-full flex flex-col items-start p-4 gap-6">
+    <div className="mt-10  w-full flex flex-col items-start p-4 gap-6 mb-10">
       <h1 className="font-bold text-3xl text-teal-500">Explore Properties </h1>
       <div className="flex gap-2 font-medium text-sm">
         <button className="border-2 border-slate-600 rounded-3xl p-1 pl-4 pr-4">

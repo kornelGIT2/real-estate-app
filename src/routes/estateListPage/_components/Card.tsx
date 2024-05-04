@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Modal from "../../../components/modal/Modal";
 import SkeletonLoading from "./SkeletonLoading";
 
@@ -12,6 +13,7 @@ interface Card {
   info: { type: number; desc: string } | null;
   loading: boolean;
   dimensions: number;
+  id: number;
 }
 
 function Card({
@@ -24,7 +26,10 @@ function Card({
   info,
   loading,
   dimensions,
+  id,
 }: Card) {
+  const navigate = useNavigate();
+
   if (loading) return <SkeletonLoading />;
   return (
     <div className="w-full   grid md:grid-cols-2 rounded-3xl  gap-2   justify-center items-center ">
@@ -33,6 +38,9 @@ function Card({
           src={image}
           alt="apartment"
           className="h-full object-cover rounded-xl hover:brightness-100 hover:cursor-pointer transition-all brightness-90"
+          onClick={() => {
+            navigate(`/property/${id}`);
+          }}
         />
         {info !== null ? (
           <small className="bg-slate-50 opacity-95  rounded-xl absolute bottom-0 text-lg text-slate-500 left-0 p-1 pl-2 pr-2 m-2 flex items-center gap-2 justify-center">
@@ -53,7 +61,9 @@ function Card({
       </div>
       <div className="flex w-full h-full justify-between p-4">
         <div className="flex flex-col items-start space-y-8 w-full justify-between ">
-          <span className="font-semibold text-3xl text-teal-500">{price}$</span>
+          <span className="font-semibold text-3xl text-teal-500 tracking-wide">
+            {price}$
+          </span>
           <span className="text-slate-500 opacity-80 flex items-center gap-1">
             <img
               src={"/assets/location.svg"}

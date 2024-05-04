@@ -22,7 +22,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`flex justify-between  items-center w-full max-w-[1360px] mx-auto font-semibold  ${
+      className={`md:flex hidden justify-between  items-center w-full max-w-[1360px] mx-auto font-semibold  ${
         header ? "" : ""
       }`}
     >
