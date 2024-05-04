@@ -7,7 +7,7 @@ function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
   const { pathname } = location;
-  const { filters } = useFilterContext();
+  const { searchParams } = useFilterContext();
 
   return (
     <nav className="  w-full mt-10 mb-4">
@@ -41,9 +41,17 @@ function Navbar() {
         <button
           onClick={() => {
             if (pathname === "/map") {
-              navigate("/list");
+              navigate(
+                `/list?minPrice=${searchParams.get(
+                  "minPrice"
+                )}&maxPrice=${searchParams.get("maxPrice")}`
+              );
             } else {
-              navigate("/map");
+              navigate(
+                `/map?minPrice=${searchParams.get(
+                  "minPrice"
+                )}&maxPrice=${searchParams.get("maxPrice")}`
+              );
             }
           }}
           className="p-2 pl-5 hover:border-slate-700 pr-5 text-md flex justify-center items-center gap-2 text-black border border-slate-400 font-medium rounded-3xl"
@@ -65,7 +73,7 @@ function Navbar() {
         </button>
       </div>
       <div className={`${pathname === "/map" ? "block" : "hidden"} mt-4`}>
-        <Filter filters={filters} />
+        <Filter />
       </div>
     </nav>
   );

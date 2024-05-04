@@ -1,18 +1,10 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { estateDummyData } from "../../const/const";
-import { useFilterContext } from "../../filterContext/FilterContext";
+import useFilter from "../../hooks/useFilter";
+import { LatLngExpression } from "leaflet";
 
-function Map({ filteredData }) {
-  const { filters, setFilters } = useFilterContext();
-
-  let data_tmp = filteredData;
-
-  console.log(filters);
-
-  if (filteredData === undefined) {
-    data_tmp = estateDummyData;
-  }
+function Map() {
+  const { filteredData } = useFilter();
 
   return (
     <MapContainer
@@ -31,9 +23,12 @@ function Map({ filteredData }) {
       <Marker position={[52.21, 21.02]}>
         <Popup>A New Apartment in the City</Popup>
       </Marker> */}
-      {data_tmp?.map((marker: any) => {
+      {filteredData?.map((marker) => {
         return (
-          <Marker key={marker.id} position={marker.position as any}>
+          <Marker
+            key={marker.id}
+            position={marker.position as LatLngExpression}
+          >
             <Popup className="">
               <div className="flex flex-col gap-3 items-center">
                 <img

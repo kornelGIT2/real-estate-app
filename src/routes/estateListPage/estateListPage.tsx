@@ -1,65 +1,23 @@
-import { useEffect, useState } from "react";
-import { estateDummyData } from "../../const/const";
-import Card from "./_components/Card";
+import { useState } from "react";
+
 import { Collapse } from "react-collapse";
 import Filter from "./_components/Filter";
 import Map from "../../components/map/map";
 import { useNavigate } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
 import { useFilterContext } from "../../filterContext/FilterContext";
+
+import PaginatedItems from "./_components/Paginate";
 
 function EstateList() {
   const [showFilterOptions, setShowFilterOptions] = useState(true);
-  const [filteredData, setFilteredData] = useState(estateDummyData);
   const navigate = useNavigate();
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(Infinity);
-  const [loading, setLoading] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams({
-    minPrice: 1,
-    maxPrice: Infinity,
-  } as any);
-
-  const { filters, setFilters } = useFilterContext();
-
-  useEffect(() => {
-    setLoading(true);
-
-    let maxPrice = parseInt(searchParams.get("maxPrice"));
-    let minPrice = parseInt(searchParams.get("minPrice"));
-
-    setFilters({ minPrice: minPrice, maxPrice: maxPrice });
-
-    if (!minPrice) {
-      minPrice = 1;
-    }
-    if (!maxPrice) {
-      maxPrice = Infinity;
-    }
-
-    setMinPrice(minPrice);
-    setMaxPrice(maxPrice);
-
-    const filteredDataW = estateDummyData.filter(
-      (el) => el.price >= minPrice && el.price <= maxPrice
-    );
-
-    setTimeout(() => {
-      if (!maxPrice || !minPrice) {
-        setFilteredData(estateDummyData);
-      } else {
-        setFilteredData(filteredDataW);
-      }
-
-      setLoading(false);
-    }, 1000);
-  }, [searchParams]);
+  const { searchParams } = useFilterContext();
 
   return (
     <>
       <div className="grid  lg:grid-cols-12 w-full  h-full gap-14 relative mt-10">
         <div className="mt-12 z-0 lg:hidden md:hidden block col-span-8">
-          <Map filteredData={filteredData} />
+          <Map />
         </div>
 
         <div className="col-span-8 flex flex-col gap-4">
@@ -84,7 +42,11 @@ function EstateList() {
 
                 <button
                   onClick={() => {
-                    navigate(`/map?minPrice=${minPrice}&maxPrice=${maxPrice}`);
+                    navigate(
+                      `/map?minPrice=${searchParams.get(
+                        "minPrice"
+                      )}&maxPrice=${searchParams.get("maxPrice")}`
+                    );
                   }}
                   className=" p-2 flex items-center gap-1 opacity-80"
                 >
@@ -117,22 +79,24 @@ function EstateList() {
           </div>
           <Collapse isOpened={showFilterOptions} className="">
             <div className="hidden md:block">
-              <Filter setFilteredOptions={setSearchParams} />
+              <Filter />
             </div>
           </Collapse>
 
-          <ul className="flex flex-col gap-12">
-            {filteredData.map((estate) => {
+          {/* <ul className="flex flex-col gap-12">
+            {currentItems?.map((estate) => {
               return (
                 <li key={estate.id} className="">
                   <Card {...estate} loading={loading} />
                 </li>
               );
             })}
-          </ul>
+          </ul> */}
+
+          <PaginatedItems />
         </div>
         <div className="col-span-4 lg:block hidden  mt-14 z-0 ">
-          <Map filteredData={filteredData} />
+          <Map />
         </div>
       </div>
     </>

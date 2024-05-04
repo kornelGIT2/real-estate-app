@@ -9,7 +9,7 @@ interface Card {
   image: string;
   bedroom: number;
   bathroom: number;
-  info: { type: number; desc: string };
+  info: { type: number; desc: string } | null;
   loading: boolean;
   dimensions: number;
 }
@@ -34,20 +34,20 @@ function Card({
           alt="apartment"
           className="h-full object-cover rounded-xl hover:brightness-100 hover:cursor-pointer transition-all brightness-90"
         />
-        {info !== undefined ? (
+        {info !== null ? (
           <small className="bg-slate-50 opacity-95  rounded-xl absolute bottom-0 text-lg text-slate-500 left-0 p-1 pl-2 pr-2 m-2 flex items-center gap-2 justify-center">
             <div className="relative h-3 w-3">
-              {info.type === 1 && (
+              {info!.type === 1 && (
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full right-0 bg-teal-400 opacity-70"></span>
               )}
-              {info.type === 1 ? (
+              {info!.type === 1 ? (
                 <span className="relative flex rounded-full h-3 w-3 bg-teal-500"></span>
               ) : (
                 <span className="relative flex rounded-full h-3 w-3 bg-gray-400"></span>
               )}
             </div>
 
-            <small className="text-sm">{info.desc}</small>
+            <small className="text-sm">{info!.desc}</small>
           </small>
         ) : null}
       </div>

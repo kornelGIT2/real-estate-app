@@ -62,6 +62,7 @@ export const estateDummyData = [
     bedroom: 3,
     bathroom: 2,
     price: 1200,
+    info: null,
     position: [52.21, 21.05],
     dimensions: 40,
   },
@@ -74,6 +75,7 @@ export const estateDummyData = [
     bedroom: 3,
     bathroom: 2,
     price: 1200,
+    info: null,
     position: [52.21, 21.004],
     dimensions: 40,
   },
@@ -99,10 +101,11 @@ export const estateDummyData = [
     bedroom: 3,
     bathroom: 2,
     price: 1200,
+    info: null,
     position: [52.22, 21.02],
     dimensions: 55,
   },
-] as const;
+];
 
 export const filterOptions = [
   {

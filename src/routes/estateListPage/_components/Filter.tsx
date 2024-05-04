@@ -1,27 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { filterOptions } from "../../../const/const";
 import Select from "./Select";
+import { useFilterContext } from "../../../filterContext/FilterContext";
 
-function Filter({
-  setFilteredOptions,
-  filters,
-}: {
-  setFilteredOptions: ({
-    maxPrice,
-    minPrice,
-  }: {
-    maxPrice: string;
-    minPrice: string;
-  }) => void;
-  filters: any;
-}) {
-  const [maxPrice, setMaxPrice] = useState(filters?.maxPrice);
-  const [minPrice, setMinPrice] = useState(filters?.minPrice);
+function Filter() {
+  const { searchParams, setSearchParams } = useFilterContext();
+  const [maxPrice, setMaxPrice] = useState(
+    parseInt(searchParams.get("maxPrice"))
+  );
+  const [minPrice, setMinPrice] = useState(
+    parseInt(searchParams.get("minPrice"))
+  );
 
-  console.log(filters?.maxPrice);
+  useEffect(() => {
+    setMaxPrice(parseInt(searchParams.get("maxPrice")));
+    setMinPrice(parseInt(searchParams.get("minPrice")));
+  }, [searchParams]);
 
   const filter = () => {
-    setFilteredOptions({
+    setSearchParams({
       maxPrice: maxPrice,
       minPrice: minPrice,
     });

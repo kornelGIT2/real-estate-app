@@ -1,16 +1,20 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
+import { useSearchParams } from "react-router-dom";
 
-const FilterContext = createContext(null);
+const FilterContext = createContext<any | null>(null);
 
 export const useFilterContext = () => {
   return useContext(FilterContext);
 };
 
 export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
-  const [filters, setFilters] = useState({});
+  const [searchParams, setSearchParams] = useSearchParams({
+    minPrice: 0,
+    maxPrice: Infinity,
+  } as any);
 
   return (
-    <FilterContext.Provider value={{ filters, setFilters }}>
+    <FilterContext.Provider value={{ searchParams, setSearchParams }}>
       {children}
     </FilterContext.Provider>
   );
