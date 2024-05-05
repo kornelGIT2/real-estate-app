@@ -40,7 +40,13 @@ function Navbar() {
         </div>
         <div className=" p-4  items-center  flex justify-between gap-4">
           <div>
-            <button className="text-blue-800 opacity-80 hover:underline">
+            <button
+              onClick={() => {
+                navigate("/list");
+              }}
+              className="text-blue-800 text-sm opacity-80 hover:underline gap-1 flex  items-center"
+            >
+              <img src="/assets/back.svg" className="h-3 w-3" alt="back" />
               Back to results
             </button>
           </div>
@@ -52,13 +58,25 @@ function Navbar() {
                   navigate(
                     `/list?minPrice=${searchParams.get(
                       "minPrice"
-                    )}&maxPrice=${searchParams.get("maxPrice")}`
+                    )}&maxPrice=${searchParams.get(
+                      "maxPrice"
+                    )}&bathroom=${searchParams.get(
+                      "bathroom"
+                    )}&bedroom=${searchParams.get(
+                      "bedroom"
+                    )}&type=${searchParams.get("type")}`
                   );
                 } else {
                   navigate(
                     `/map?minPrice=${searchParams.get(
                       "minPrice"
-                    )}&maxPrice=${searchParams.get("maxPrice")}`
+                    )}&maxPrice=${searchParams.get(
+                      "maxPrice"
+                    )}&bathroom=${searchParams.get(
+                      "bathroom"
+                    )}&bedroom=${searchParams.get(
+                      "bedroom"
+                    )}&type=${searchParams.get("type")}`
                   );
                 }
               }}
@@ -70,15 +88,6 @@ function Navbar() {
                 className="h-4 w-4 mt-[1px]"
               />
               {pathname === "/map" ? "Close Map" : "Open Map"}
-            </button>
-
-            <button className="p-2 pl-5 hover:border-slate-700 pr-5 text-md flex justify-center items-center gap-2 text-black border border-slate-400 font-medium rounded-3xl">
-              <img
-                src="/assets/filters.svg"
-                alt="search"
-                className="h-4 w-4 mt-[1px]"
-              />
-              Filters
             </button>
           </div>
         </div>

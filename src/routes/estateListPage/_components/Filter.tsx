@@ -11,16 +11,28 @@ function Filter() {
   const [minPrice, setMinPrice] = useState(
     parseInt(searchParams.get("minPrice"))
   );
+  const [bedroom, setBedroom] = useState(parseInt(searchParams.get("bedroom")));
+  const [bathroom, setBathroom] = useState(
+    parseInt(searchParams.get("bathroom"))
+  );
+
+  const [type, setType] = useState<string>("");
 
   useEffect(() => {
     setMaxPrice(parseInt(searchParams.get("maxPrice")));
     setMinPrice(parseInt(searchParams.get("minPrice")));
+    setBedroom(parseInt(searchParams.get("bedroom")));
+    setBathroom(parseInt(searchParams.get("bathroom")));
+    setType(searchParams.get("type"));
   }, [searchParams]);
 
   const filter = () => {
     setSearchParams({
       maxPrice: maxPrice,
       minPrice: minPrice,
+      bathroom: bathroom,
+      bedroom: bedroom,
+      type: type,
     });
   };
 
@@ -30,7 +42,7 @@ function Filter() {
         {filterOptions.map((option, i) => {
           return (
             <li key={i}>
-              <Select {...option} />{" "}
+              <Select {...option} selected={type} onSelect={setType} />{" "}
             </li>
           );
         })}
@@ -46,6 +58,7 @@ function Filter() {
             placeholder="Min Price"
             type="number"
             value={minPrice}
+            min="0"
             onChange={(e: any) => {
               setMinPrice(e.target.value);
             }}
@@ -63,6 +76,7 @@ function Filter() {
             placeholder="Max Price"
             type="number"
             value={maxPrice}
+            min="0"
             onChange={(e: any) => {
               setMaxPrice(e.target.value);
             }}
@@ -79,6 +93,10 @@ function Filter() {
             className="max-w-[120px] block w-full p-2  text-sm text-gray-900 border border-gray-300 rounded-xl"
             placeholder="Bedroom"
             type="number"
+            value={bedroom}
+            onChange={(e: any) => {
+              setBedroom(e.target.value);
+            }}
           />
         </li>
         <li className="flex flex-col items-start">
@@ -92,6 +110,10 @@ function Filter() {
             className="max-w-[120px] block w-full p-2  text-sm text-gray-900 border border-gray-300 rounded-xl"
             placeholder="Bathroom"
             type="number"
+            value={bathroom}
+            onChange={(e: any) => {
+              setBathroom(e.target.value);
+            }}
           />
         </li>
         <button onClick={filter}>

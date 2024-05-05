@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchButton from "./SearchButton";
 import { searchButtonTypes } from "../../const/const";
 import { useNavigate } from "react-router-dom";
+import { useFilterContext } from "../../filterContext/FilterContext";
 
 export type searchOptions = "Buy" | "Rent" | "Adress";
 
@@ -14,6 +15,7 @@ function HeroSearch({
 }) {
   const navigate = useNavigate();
   const [searchOption, setSearchOption] = useState<searchOptions>("Buy");
+  const { searchParams } = useFilterContext();
 
   return (
     <div className="bg-white text-black max-w-[700px] mx-auto h-[110px] flex flex-col justify-center items-start rounded-xl">
@@ -58,7 +60,17 @@ function HeroSearch({
             </button>
             <button
               onClick={() => {
-                navigate("/list");
+                navigate(
+                  `/list?minPrice=${searchParams.get(
+                    "minPrice"
+                  )}&maxPrice=${searchParams.get(
+                    "maxPrice"
+                  )}&bathroom=${searchParams.get(
+                    "bathroom"
+                  )}&bedroom=${searchParams.get(
+                    "bedroom"
+                  )}&type=${searchParams.get("type")}`
+                );
               }}
               className="p-2 pl-5 hover:bg-teal-700 transition-all pr-5 text-md bg-teal-500 text-white font-semibold rounded-3xl"
             >

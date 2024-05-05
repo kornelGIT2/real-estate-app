@@ -5,7 +5,7 @@ import SkeletonLoading from "./SkeletonLoading";
 interface Card {
   title: string;
   price: number;
-  adress: string;
+  address: string;
   city: string;
   image: string;
   bedroom: number;
@@ -18,7 +18,7 @@ interface Card {
 
 function Card({
   price,
-  adress,
+  address,
   city,
   image,
   bedroom,
@@ -70,7 +70,7 @@ function Card({
               alt="apartment"
               className="h-4 w-4 opacity-50"
             />{" "}
-            {adress}, {city}
+            {address}, {city}
           </span>
           <span className="text-slate-500 opacity-80 flex items-center gap-2">
             {" "}

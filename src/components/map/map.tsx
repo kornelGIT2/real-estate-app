@@ -14,17 +14,18 @@ function Map({ heigth, id }: { heigth: number; id?: number | undefined }) {
 
   const position =
     id === undefined
-      ? (filteredData[0].position as LatLngExpression)
-      : (selectedProperty[0].position as LatLngExpression);
+      ? (filteredData[0]?.position as LatLngExpression)
+      : (selectedProperty[0]?.position as LatLngExpression);
 
   const display_data = id === undefined ? filteredData : selectedProperty;
 
   return (
     <MapContainer
       center={position}
-      zoom={13}
+      zoom={id !== undefined ? 13 : 7}
       scrollWheelZoom={false}
-      className={`h-[${heigth}px] w-full rounded-2xl shadow-lg`}
+      className={` w-full rounded-2xl shadow-lg`}
+      style={{ height: heigth }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -43,20 +44,21 @@ function Map({ heigth, id }: { heigth: number; id?: number | undefined }) {
             position={marker.position as LatLngExpression}
           >
             <Popup className="">
-              <div className="flex flex-col justify-center gap-4 items-center h-[250px] w-[200px]">
+              <div className="flex flex-col justify-center gap-4 items-center h-[300px] w-[200px]">
                 <img
                   src={marker.image}
                   alt="property"
                   className="rounded-xl shadow-lg "
                 />
-                <h1 className="font-bold">{marker.price}$</h1>
-                <span className="text-slate-500">{marker.adress}</span>
+                <h1 className="font-bold text-xl">{marker.price}$</h1>
+                <span className="text-slate-500">{marker.address}</span>
+                <span className="text-slate-800">{marker.type}</span>
                 {id === undefined ? (
                   <button
                     onClick={() => {
                       navigate(`/property/${marker.id}`);
                     }}
-                    className="bg-teal-500 p-2 pr-3 pl-3 font-semibold hover:bg-teal-600 text-white rounded-2xl"
+                    className="bg-teal-500 p-2 pr-3 pl-3 font-semibold hover:bg-teal-600 text-white rounded-xl"
                   >
                     Check Details
                   </button>

@@ -16,9 +16,9 @@ function EstateList() {
   return (
     <>
       <div className="grid  lg:grid-cols-12 w-full  h-full gap-14 relative mt-10">
-        <div className="mt-12 z-0 lg:hidden md:hidden block col-span-8">
+        {/* <div className="mt-12 z-0 lg:hidden md:hidden block col-span-8">
           <Map heigth={600} />
-        </div>
+        </div> */}
 
         <div className="col-span-8 flex flex-col gap-4">
           <div className=" w-full flex flex-col items-start gap-2 ">
@@ -45,7 +45,13 @@ function EstateList() {
                     navigate(
                       `/map?minPrice=${searchParams.get(
                         "minPrice"
-                      )}&maxPrice=${searchParams.get("maxPrice")}`
+                      )}&maxPrice=${searchParams.get(
+                        "maxPrice"
+                      )}&bathroom=${searchParams.get(
+                        "bathroom"
+                      )}&bedroom=${searchParams.get(
+                        "bedroom"
+                      )}&type=${searchParams.get("type")}`
                     );
                   }}
                   className=" p-2 flex items-center gap-1 opacity-80"

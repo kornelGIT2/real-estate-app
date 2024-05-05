@@ -14,7 +14,6 @@ function PaginatedItems() {
 
   const { searchParams } = useFilterContext();
 
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const [loading, setLoading] = useState(false);
   const currentItems = filteredData?.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(filteredData?.length / itemsPerPage);
@@ -24,15 +23,11 @@ function PaginatedItems() {
 
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 500);
   }, [searchParams, itemOffset]);
 
-  // Invoke when user click to request another page.
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % filteredData?.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
 

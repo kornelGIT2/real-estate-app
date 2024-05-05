@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { LeftNavRoutes, RightNavRoutes } from "../../const/const";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [header, setHeader] = useState(false);
@@ -35,7 +36,9 @@ function Navbar() {
           {LeftNavRoutes.map((route, i) => {
             return (
               <li className="cursor-pointer hover:opacity-80" key={i}>
-                {route.route}
+                <Link to={route.route === "Browse Properties" ? "/list" : "/"}>
+                  {route.route}
+                </Link>
               </li>
             );
           })}

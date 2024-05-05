@@ -8,10 +8,7 @@ export const useFilterContext = () => {
 };
 
 export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
-  const [searchParams, setSearchParams] = useSearchParams({
-    minPrice: 0,
-    maxPrice: Infinity,
-  } as any);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <FilterContext.Provider value={{ searchParams, setSearchParams }}>

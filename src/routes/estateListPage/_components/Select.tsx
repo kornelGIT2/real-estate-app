@@ -1,4 +1,16 @@
-function Select({ label, options }: { label: string; options: string[] }) {
+import { SetStateAction } from "react";
+
+function Select({
+  label,
+  options,
+  onSelect,
+  selected,
+}: {
+  label: string;
+  options: string[];
+  onSelect: React.Dispatch<SetStateAction<string>>;
+  selected?: undefined | string;
+}) {
   return (
     <div className="flex flex-col items-start">
       <label
@@ -8,6 +20,10 @@ function Select({ label, options }: { label: string; options: string[] }) {
         {label}
       </label>
       <select
+        value={selected}
+        onChange={(e) => {
+          onSelect(e.target.value);
+        }}
         id="small"
         className="block w-full p-2  text-sm text-gray-900 border border-gray-300 rounded-xl max-w-[120px]"
       >

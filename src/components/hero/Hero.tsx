@@ -12,7 +12,7 @@ function Hero() {
         <img
           src="/assets/image2.jpg"
           alt="hero-image"
-          className="h-[450px] w-full object-cover rounded-lg brightness-50 "
+          className="h-[450px] w-full object-cover rounded-lg brightness-50 shadow-lg"
         />
         <div className="absolute inset-0 text-white text-center gap-4 flex flex-col max-w-[700px] mx-auto p-4 mt-10">
           <h1 className="font-bold text-4xl md:text-6xl">

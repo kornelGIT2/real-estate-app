@@ -24,7 +24,7 @@ function PropertyDetails() {
           <img
             src={propertyDetails[0]?.image}
             alt="source_image"
-            className="rounded-xl brightness-90 h-full object-cover"
+            className="rounded-xl brightness-90 h-full object-cover shadow-lg"
           />
         </div>
         <div className="col-span-4">
@@ -32,7 +32,7 @@ function PropertyDetails() {
             {[
               [...Array(3)].map((image, i) => {
                 return (
-                  <li key={i} className="relative">
+                  <li key={i} className="relative shadow-lg">
                     <img
                       src={propertyDetails[0]?.image}
                       alt="source_image"
@@ -116,19 +116,23 @@ function PropertyDetails() {
         </div>
         <div className="col-span-4 relative w-full ">
           <div className="rounded-xl h-[400px] border border-black border-opacity-10 shadow-md p-8 flex flex-col justify-between">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col  items-center gap-6 justify-between">
               <h1 className="font-semibold text-3xl">
                 ${propertyDetails[0].price}
               </h1>
               <h2 className=" text-neutral-500 text-xl">
-                {propertyDetails[0].adress}, {propertyDetails[0].city}
+                {propertyDetails[0].address}, {propertyDetails[0].city}
+              </h2>
+              <h2 className=" text-neutral-800 text-xl">
+                {propertyDetails[0].type}
               </h2>
             </div>
             <div className="flex flex-col gap-2 border-t border-neutral-200 p-4 pt-8">
-              <button className="p-4 bg-teal-500 rounded-xl text-white font-semibold">
+              <button className="p-4 bg-teal-500 rounded-xl text-white font-semibold hover:bg-teal-600">
                 Contact
               </button>
-              <button className="p-4 border font-medium border-black rounded-xl flex items-center justify-center gap-2">
+
+              <button className="p-4 border font-medium border-neutral-500 rounded-xl hover:border-black flex items-center justify-center gap-2">
                 <img src="/assets/favorite.svg" alt="fav" className="w-4 h-4" />{" "}
                 Save property
               </button>
