@@ -18,6 +18,7 @@ interface Card {
 
 function Card({
   price,
+  title,
   address,
   city,
   image,
@@ -32,12 +33,12 @@ function Card({
 
   if (loading) return <SkeletonLoading />;
   return (
-    <div className="w-full   grid md:grid-cols-2 rounded-3xl  gap-2   justify-center items-center ">
+    <div className="w-full grid md:grid-cols-2 rounded-3xl  gap-2 justify-center items-center ">
       <div className="h-full relative">
         <img
           src={image}
           alt="apartment"
-          className="h-full object-cover rounded-xl hover:brightness-100 hover:cursor-pointer transition-all brightness-90"
+          className="h-full object-cover rounded-xl  hover:cursor-pointer transition-all hover:opacity-90"
           onClick={() => {
             navigate(`/property/${id}`);
           }}
@@ -61,7 +62,8 @@ function Card({
       </div>
       <div className="flex w-full h-full justify-between p-4">
         <div className="flex flex-col items-start space-y-8 w-full justify-between ">
-          <span className="font-semibold text-3xl text-teal-500 tracking-wide">
+          <span className="font-semibold text-xl text-start">{title}</span>
+          <span className="font-semibold text-xl text-teal-500 tracking-wide">
             {price}$
           </span>
           <span className="text-slate-500 opacity-80 flex items-center gap-1">
@@ -107,7 +109,12 @@ function Card({
         </div>
         <div className="flex items-end justify-center gap-4">
           <Modal />
-          <button className="">
+          <button
+            onClick={() => {
+              navigate(`/property/${id}`);
+            }}
+            className=""
+          >
             <img
               src={"/assets/contact.svg"}
               alt="apartment"

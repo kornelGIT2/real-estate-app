@@ -74,7 +74,32 @@ function HeroSearch({
               }}
               className="p-2 pl-5 hover:bg-teal-700 transition-all pr-5 text-md bg-teal-500 text-white font-semibold rounded-3xl"
             >
-              Search
+              <span>Search</span>
+            </button>
+          </div>
+          <div className="md:hidden">
+            {" "}
+            <button
+              onClick={() => {
+                navigate(
+                  `/list?minPrice=${searchParams.get(
+                    "minPrice"
+                  )}&maxPrice=${searchParams.get(
+                    "maxPrice"
+                  )}&bathroom=${searchParams.get(
+                    "bathroom"
+                  )}&bedroom=${searchParams.get(
+                    "bedroom"
+                  )}&type=${searchParams.get("type")}`
+                );
+              }}
+              className="flex flex-col ml-4 items-center justify-center bg-teal-500 hover:bg-teal-600 shadow-lg w-[55px] p-3 rounded-2xl cursor-pointer"
+            >
+              <img
+                src="/assets/search.svg"
+                alt="hero-image"
+                className="h-6 w-6 object-cover rounded-lg  invert"
+              />
             </button>
           </div>
         </div>

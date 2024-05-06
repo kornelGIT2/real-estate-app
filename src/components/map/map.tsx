@@ -44,15 +44,33 @@ function Map({ heigth, id }: { heigth: number; id?: number | undefined }) {
             position={marker.position as LatLngExpression}
           >
             <Popup className="">
-              <div className="flex flex-col justify-center gap-4 items-center h-[300px] w-[200px]">
+              <div className="flex flex-col justify-center gap-3 items-center h-[400px] w-[250px]">
                 <img
                   src={marker.image}
                   alt="property"
                   className="rounded-xl shadow-lg "
                 />
-                <h1 className="font-bold text-xl">{marker.price}$</h1>
-                <span className="text-slate-500">{marker.address}</span>
-                <span className="text-slate-800">{marker.type}</span>
+                <div className="flex flex-col justify-center items-center gap-2">
+                  <h1 className="font-bold text-lg text-center">
+                    {marker.title}
+                  </h1>
+                  <h1 className="font-semibold text-lg text-teal-500 tracking-wider">
+                    {marker.price}$
+                  </h1>
+                </div>
+                <hr className="border-b w-full border-neutral-100"></hr>
+                <span className="text-slate-500 flex justify-center items-center gap-1">
+                  <img
+                    src="/assets/location.svg"
+                    alt="location"
+                    className="w-4 h-4 opacity-35 mb-[3px]"
+                  />
+                  {marker.address}, {marker.city}
+                </span>
+                <span className="text-slate-800 font-semibold tracking-wider">
+                  {marker.type}
+                </span>
+                <hr className="border-b w-full border-neutral-100"></hr>
                 {id === undefined ? (
                   <button
                     onClick={() => {
@@ -60,7 +78,7 @@ function Map({ heigth, id }: { heigth: number; id?: number | undefined }) {
                     }}
                     className="bg-teal-500 p-2 pr-3 pl-3 font-semibold hover:bg-teal-600 text-white rounded-xl"
                   >
-                    Check Details
+                    Check details
                   </button>
                 ) : null}
               </div>

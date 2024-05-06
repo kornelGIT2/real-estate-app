@@ -10,27 +10,27 @@ function Navbar() {
   const { searchParams } = useFilterContext();
 
   return (
-    <nav className=" w-full mb-4 bg-neutral-50 border-b-2 border-neutral-100">
+    <nav className=" w-full mb-4 bg-neutral-50 border-b-2 border-neutral-100 md:block ">
       <div className="max-w-[1300px] mx-auto">
-        <div className=" border-b   p-8  border-neutral-200 flex justify-between">
+        <div className=" border-b  p-8  border-neutral-200 flex justify-between items-center">
           <h1
-            className="font-semibold text-3xl hover:cursor-pointer"
+            className="font-semibold md:text-3xl text-2xl hover:cursor-pointer"
             onClick={() => {
               navigate("/");
             }}
           >
             Real<span className="text-teal-500">Estate</span>
           </h1>
-          <ul className="flex gap-8 items-center">
+          <ul className="flex gap-4 md:gap-8 items-center">
             {RightNavRoutes.map((route, i) => {
               return (
                 <li
                   key={i}
                   className={`${
                     route.route === "Join"
-                      ? "bg-teal-500 text-white rounded-lg p-2 pl-6 pr-6"
-                      : ""
-                  } font-medium`}
+                      ? "bg-teal-500 text-white hover:bg-teal-600 rounded-lg p-2 pl-6 pr-6"
+                      : "hover:opacity-60"
+                  } font-medium  cursor-pointer`}
                 >
                   {route.route}
                 </li>
@@ -40,7 +40,7 @@ function Navbar() {
         </div>
         <div className=" p-4  items-center  flex justify-between gap-4">
           <div>
-            <button
+            {/* <button
               onClick={() => {
                 navigate("/list");
               }}
@@ -48,7 +48,7 @@ function Navbar() {
             >
               <img src="/assets/back.svg" className="h-3 w-3" alt="back" />
               Back to results
-            </button>
+            </button> */}
           </div>
 
           <div className="flex gap-4">

@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import useFilter from "../../../hooks/useFilter";
 import { useFilterContext } from "../../../filterContext/FilterContext";
 import Card from "./Card";
+import sort from "../../../utils/sort";
 
-function PaginatedItems() {
+function PaginatedItems({
+  setOffsetData,
+}: {
+  setOffsetData: React.Dispatch<SetStateAction<number>>;
+}) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const { filteredData } = useFilter();
@@ -15,8 +20,15 @@ function PaginatedItems() {
   const { searchParams } = useFilterContext();
 
   const [loading, setLoading] = useState(false);
-  const currentItems = filteredData?.slice(itemOffset, endOffset);
+
   const pageCount = Math.ceil(filteredData?.length / itemsPerPage);
+
+  const sortedItems = sort({
+    sortType: searchParams.get("activeSort"),
+    items: filteredData,
+  });
+
+  const currentItems = sortedItems?.slice(itemOffset, endOffset);
 
   useEffect(() => {
     setLoading(true);
@@ -28,7 +40,9 @@ function PaginatedItems() {
 
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % filteredData?.length;
+    setOffsetData(newOffset);
     setItemOffset(newOffset);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -50,7 +64,7 @@ function PaginatedItems() {
         pageCount={pageCount}
         previousLabel="< Previous"
         renderOnZeroPageCount={null}
-        className="flex gap-4 mt-6 font-semibold text-sm"
+        className="flex gap-4 mt-6 font-semibold text-sm justify-center md:justify-start"
       />
     </>
   );

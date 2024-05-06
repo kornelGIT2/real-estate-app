@@ -12,10 +12,10 @@ function Select({
   selected?: undefined | string;
 }) {
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-start w-full ">
       <label
         htmlFor="small"
-        className="block mb-2 text-sm font-medium text-slate-700 "
+        className="md:block  hidden mb-2 text-sm font-medium text-slate-700 "
       >
         {label}
       </label>

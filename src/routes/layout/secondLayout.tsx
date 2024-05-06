@@ -7,7 +7,7 @@ function SecondLayout() {
     <main className="flex flex-col items-center ">
       <FilterProvider>
         <Navbar />
-        <div className="max-w-[1500px] mx-auto p-[0.5rem]">
+        <div className="max-w-[1500px] mx-auto p-[0.5rem] w-full">
           <Outlet />
         </div>
       </FilterProvider>

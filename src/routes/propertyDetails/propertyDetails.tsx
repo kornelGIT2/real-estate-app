@@ -27,6 +27,19 @@ function PropertyDetails() {
             className="rounded-xl brightness-90 h-full object-cover shadow-lg"
           />
         </div>
+        <div className="md:hidden mt-4 flex flex-col gap-2">
+          <h1 className="font-semibold text-xl">{propertyDetails[0].title}</h1>
+          <h2 className="font-semibold text-xl">{propertyDetails[0].price}$</h2>
+          <h3 className="text-slate-500 flex items-center justify-center gap-1">
+            <img
+              src="/assets/location.svg"
+              alt="location"
+              className="w-5 h-5 opacity-35"
+            />{" "}
+            {propertyDetails[0].address}, {propertyDetails[0].city}
+          </h3>
+          <h3 className="font-semibold ">{propertyDetails[0].type}</h3>
+        </div>
         <div className="col-span-4">
           <ul className="md:flex flex-col gap-2 hidden">
             {[
@@ -42,7 +55,7 @@ function PropertyDetails() {
                     />
                     {i === 2 && (
                       <span className="font-bold text-5xl text-white absolute m-auto  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        +12
+                        +12 {image}
                       </span>
                     )}
                   </li>
@@ -52,10 +65,10 @@ function PropertyDetails() {
           </ul>
         </div>
       </div>
-      <div className="grid md:grid-cols-12 relative gap-10 p-10 border-t border-neutral-200 mt-10">
+      <div className="grid lg:grid-cols-12 relative gap-10 p-10 border-t border-neutral-200 md:mt-10 mt-4">
         <div className="col-span-8 flex flex-col gap-4">
           <div className="w-full ">
-            {<Map heigth={400} id={parseInt(id)} />}
+            {<Map heigth={400} id={parseInt(id as any)} />}
           </div>
           <div
             id="fade"
@@ -114,20 +127,28 @@ function PropertyDetails() {
             </button>
           </div>
         </div>
-        <div className="col-span-4 relative w-full ">
-          <div className="rounded-xl h-[400px] border border-black border-opacity-10 shadow-md p-8 flex flex-col justify-between">
+        <div className="col-span-4 relative w-full lg:block hidden">
+          <div className="rounded-xl  border border-black border-opacity-10 shadow-md p-8 flex flex-col justify-between">
             <div className="flex flex-col  items-center gap-6 justify-between">
-              <h1 className="font-semibold text-3xl">
+              <h1 className="font-semibold text-xl ">
+                {propertyDetails[0].title}
+              </h1>
+              <h1 className="font-semibold text-xl ">
                 ${propertyDetails[0].price}
               </h1>
-              <h2 className=" text-neutral-500 text-xl">
+              <h2 className=" text-neutral-500 text-lg flex justify-center items-center gap-1 ">
+                <img
+                  src="/assets/location.svg"
+                  alt="location"
+                  className="w-6 h-6 opacity-35"
+                />{" "}
                 {propertyDetails[0].address}, {propertyDetails[0].city}
               </h2>
-              <h2 className=" text-neutral-800 text-xl">
+              <h2 className=" font-semibold text-lg">
                 {propertyDetails[0].type}
               </h2>
             </div>
-            <div className="flex flex-col gap-2 border-t border-neutral-200 p-4 pt-8">
+            <div className="flex flex-col gap-2 border-t border-neutral-200 p-4 pt-6 mt-4">
               <button className="p-4 bg-teal-500 rounded-xl text-white font-semibold hover:bg-teal-600">
                 Contact
               </button>

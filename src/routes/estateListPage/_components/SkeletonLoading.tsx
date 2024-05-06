@@ -2,9 +2,9 @@ function SkeletonLoading() {
   return (
     <div
       role="status"
-      className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:grid md:grid-cols-2 md:items-center"
+      className="space-y-8 animate-pulse md:space-y-0 md:space-x-8 w-full rtl:space-x-reverse md:grid md:grid-cols-2 md:items-center"
     >
-      <div className="flex items-center justify-center w-full h-80 bg-gray-300 rounded-xl sm:w-96 ">
+      <div className="flex items-center justify-center w-full h-80 bg-gray-300 rounded-xl  ">
         <svg
           className="w-10 h-10 text-gray-200  rounded-xl"
           aria-hidden="true"
