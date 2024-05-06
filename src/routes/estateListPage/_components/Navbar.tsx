@@ -64,7 +64,7 @@ function Navbar() {
                       "bathroom"
                     )}&bedroom=${searchParams.get(
                       "bedroom"
-                    )}&type=${searchParams.get("type")}`
+                    )}&type=${searchParams.get("type")}&activeSort=Featured`
                   );
                 } else {
                   navigate(
@@ -76,7 +76,7 @@ function Navbar() {
                       "bathroom"
                     )}&bedroom=${searchParams.get(
                       "bedroom"
-                    )}&type=${searchParams.get("type")}`
+                    )}&type=${searchParams.get("type")}&activeSort=Featured`
                   );
                 }
               }}

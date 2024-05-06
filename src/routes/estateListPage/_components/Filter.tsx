@@ -36,7 +36,7 @@ function Filter() {
         bathroom: bathroom,
         bedroom: bedroom,
         type: type,
-        activeSort: activeSort === null ? "featured" : activeSort,
+        activeSort: activeSort === null ? "Featured" : activeSort,
       },
       { replace: true }
     );

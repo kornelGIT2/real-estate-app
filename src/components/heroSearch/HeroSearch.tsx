@@ -69,7 +69,7 @@ function HeroSearch({
                     "bathroom"
                   )}&bedroom=${searchParams.get(
                     "bedroom"
-                  )}&type=${searchParams.get("type")}`
+                  )}&type=${searchParams.get("type")}&activeSort=Featured`
                 );
               }}
               className="p-2 pl-5 hover:bg-teal-700 transition-all pr-5 text-md bg-teal-500 text-white font-semibold rounded-3xl"
@@ -90,7 +90,7 @@ function HeroSearch({
                     "bathroom"
                   )}&bedroom=${searchParams.get(
                     "bedroom"
-                  )}&type=${searchParams.get("type")}`
+                  )}&type=${searchParams.get("type")}&activeSort=Featured`
                 );
               }}
               className="flex flex-col ml-4 items-center justify-center bg-teal-500 hover:bg-teal-600 shadow-lg w-[55px] p-3 rounded-2xl cursor-pointer"
