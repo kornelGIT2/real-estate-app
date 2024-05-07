@@ -28,6 +28,8 @@ function Filter() {
     setType(searchParams.get("type"));
   }, [searchParams]);
 
+  
+
   const filter = () => {
     setSearchParams(
       {

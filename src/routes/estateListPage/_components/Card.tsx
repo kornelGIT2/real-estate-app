@@ -38,7 +38,7 @@ function Card({
         <img
           src={image}
           alt="apartment"
-          className="h-full object-cover rounded-xl  hover:cursor-pointer transition-all hover:opacity-90"
+          className=" object-cover rounded-xl  hover:cursor-pointer transition-all hover:opacity-90"
           onClick={() => {
             navigate(`/property/${id}`);
           }}

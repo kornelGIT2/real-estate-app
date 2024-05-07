@@ -24,7 +24,7 @@ function PropertyDetails() {
           <img
             src={propertyDetails[0]?.image}
             alt="source_image"
-            className="rounded-xl brightness-90 h-full object-cover shadow-lg"
+            className="rounded-xl brightness-90 md:h-full object-cover shadow-lg"
           />
         </div>
         <div className="md:hidden mt-4 flex flex-col gap-2">
