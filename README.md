@@ -4,8 +4,8 @@ Real Estate Application
 
 ## Background
 
-The real estate application offers responsive and minimalistic design tailored for an optimal user experience.
-It boasts an intuitive interface that seamlessly integrates an interactive map feature, allowing users to explore properties with ease. With a multitude of filtering options, users can refine their search based on specific criteria.
+The real estate application offers responsive and minimalistic design for an optimal user experience.
+Provides an intuitive interface that integrates an interactive map feature. With a multitude of url-based filtering and sorting options, users can refine their search based on specific criteria.
 
 ## Technology Stack
 
