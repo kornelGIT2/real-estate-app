@@ -19,6 +19,16 @@ function PropertyDetails() {
 
   return (
     <main className="min-h-screen md:p-2 p-0">
+      <div className="md:hidden fixed flex items-center justify-center gap-6 bottom-0 h-24 bg-neutral-50 w-full z-50 p-6">
+        <button className="p-3 pl-6 pr-6 bg-teal-500 rounded-xl text-white font-semibold hover:bg-teal-600">
+          Contact
+        </button>
+
+        <button className="p-3 border font-medium border-neutral-500 rounded-xl hover:border-black flex items-center justify-center gap-2">
+          <img src="/assets/favorite.svg" alt="fav" className="w-4 h-4" /> Save
+          property
+        </button>
+      </div>
       <div className="md:grid md:grid-cols-12 flex flex-col gap-2 ">
         <div className="col-span-8">
           <img
@@ -66,7 +76,7 @@ function PropertyDetails() {
         </div>
       </div>
       <div className="grid lg:grid-cols-12 relative gap-10 p-10 border-t border-neutral-200 md:mt-10 mt-4">
-        <div className="col-span-8 flex flex-col gap-4">
+        <div className="col-span-8 flex flex-col gap-4 z-0">
           <div className="w-full ">
             {<Map heigth={400} id={parseInt(id as any)} />}
           </div>
