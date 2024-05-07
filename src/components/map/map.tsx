@@ -2,6 +2,8 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import useFilter from "../../hooks/useFilter";
 import { LatLngExpression } from "leaflet";
+import "leaflet-defaulticon-compatibility";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import { useNavigate } from "react-router-dom";
 
 function Map({ heigth, id }: { heigth: number; id?: number | undefined }) {
