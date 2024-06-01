@@ -14,6 +14,8 @@ function useFilter() {
     const bathroom = parseInt(searchParams.get("bathroom"));
     const type = searchParams.get("type");
 
+    console.log("debug");
+
     const filteredDummyData = estateDummyData.filter((el) => {
       let isBathroomInitialized = true;
       let isBedroomInitialized = true;
